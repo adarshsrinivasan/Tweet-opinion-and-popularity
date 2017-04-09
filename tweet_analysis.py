@@ -21,10 +21,11 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 #api.update_status('tweepy + oauth!')
-data = Cursor(api.search, q='jallikattu').items(5)
+data = Cursor(api.search,q='#apple',geocode='12.9715987,77.59456269999998,100km').items(5)
 table = pd.DataFrame()
 tweets = []
 words = []
+
 with open('test.txt', 'w') as outfile:
         for tweet in data:
             tweets.append(json.loads(json.dumps(tweet._json)))
@@ -81,3 +82,5 @@ for tweet in list_of_clean_english_tweets:
 
 print(result)
 print(list_of_clean_english_tweets)
+# for x in xrange(len(list_of_clean_english_tweets)):
+# 	print list_of_clean_english_tweets[x] + '\n'
