@@ -10,6 +10,9 @@ access_secret = '3WzwKcMMM0kDpaKoPAhTNhG16iki3zZWhTwV1eAAyP0Ci'
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
+
+#input hashtag
+
 query='#' + raw_input()
 data = Cursor(api.search, q=query, geocode='12.9715987,77.59456269999998,100km', lang='en').items(5)
 
